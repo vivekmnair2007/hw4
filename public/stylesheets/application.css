@@ -1,0 +1,6 @@
+.navbar-nav.mb-2.mb-lg-0 {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Add this line */
+  /* Other styles for this element */
+}
