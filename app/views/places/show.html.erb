@@ -3,13 +3,23 @@
 <p>
   <a href="/entries/new?place_id=<%= @place["id"] %>" class="btn btn-primary">New Entry</a>
 </p>
+<div class="row">
+  <% for entry in @entries %>
+    <div class="col-sm-6 col-md-4">
+      
+      <h3><%= entry["title"] %></h3>
+      <p><%= entry["occurred_on"] %></p>
 
-<% for entry in @entries %>
-  <h3><%= entry["title"] %></h3>
-  <p><%= entry["occurred_on"] %></p>
-  <p><%= entry["description"] %></p>
-<% end %>
+      <% if entry.uploaded_image.attached? %>
+        <img src="<%= url_for(entry.uploaded_image) %>" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover;">
+      <% else %>
+        <img src="<%= entry["image"] %>" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover;">
+      <% end %>
 
+      <p><%= entry["description"] %></p>
+    </div>
+  <% end %>
+</div>
 <p>
   <a href="/places">Back to All Places</a>
 </p>
